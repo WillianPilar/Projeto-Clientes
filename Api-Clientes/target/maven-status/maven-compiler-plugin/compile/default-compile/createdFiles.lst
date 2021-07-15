@@ -1,0 +1,12 @@
+com\example\Clientes\ApiClientes\ApiClientesApplication.class
+com\example\Clientes\ApiClientes\Repository\ServicoRepository.class
+com\example\Clientes\ApiClientes\DTO\ClientesDTO.class
+com\example\Clientes\ApiClientes\Controller\ClientesController.class
+com\example\Clientes\ApiClientes\Model\Servico.class
+com\example\Clientes\ApiClientes\Repository\ClientesRepository.class
+com\example\Clientes\ApiClientes\Model\Clientes$ClientesBuilder.class
+com\example\Clientes\ApiClientes\Swagger\SwaggerConfig.class
+com\example\Clientes\ApiClientes\Service\ClientesService.class
+com\example\Clientes\ApiClientes\DTO\ClientesDTO$ClientesDTOBuilder.class
+com\example\Clientes\ApiClientes\Model\Servico$ServicoBuilder.class
+com\example\Clientes\ApiClientes\Model\Clientes.class

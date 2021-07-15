@@ -10,7 +10,8 @@ import lombok.*;
 
 
 @Entity
-@Data
+@Getter
+@Setter
 @Builder //Para enviar dados aos construtores de forma mais prática
 @NoArgsConstructor
 @AllArgsConstructor

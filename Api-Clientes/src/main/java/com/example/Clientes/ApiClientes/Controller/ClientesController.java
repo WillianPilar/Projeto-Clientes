@@ -67,8 +67,8 @@ public class ClientesController {
 			update.setNome(updateCliente.getNome());
 			update.setCpf(updateCliente.getCpf());
 			
-			
 			clientesService.updateCliente(update);
+			
 		}else {
 			return ResponseEntity.notFound().build();
 		}
