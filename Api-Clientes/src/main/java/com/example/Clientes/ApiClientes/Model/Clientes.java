@@ -6,6 +6,7 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
+//import org.hibernate.validator.constraints.br.CPF;
 
 
 
@@ -25,6 +26,7 @@ public class Clientes {
 	@Column(nullable = false, length = 100) //Para criar coluna no BD e passar as definições
 	public String nome;
 	
+	//@CPF(message="cpf inválido")
 	@Column(nullable = false, length = 11)
 	public String cpf;
 	
