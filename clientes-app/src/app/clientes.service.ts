@@ -11,7 +11,7 @@ export class ClientesService {
   constructor( private http : HttpClient ) { }
 
   salvar( cliente : Cliente) : Observable<Cliente>{
-    return this.http.post<Cliente>("http://localhost:8081/api/clientes", cliente);
+    return this.http.post<Cliente>("http://localhost:8080/api/clientes", cliente);
   }
 
   getCliente() : Cliente {

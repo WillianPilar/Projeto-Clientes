@@ -2,13 +2,13 @@ package com.example.Clientes.ApiClientes.Model;
 
 import java.time.LocalDate;
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.br.CPF;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
-//import org.hibernate.validator.constraints.br.CPF;
-
-
 
 @Entity
 @Getter
@@ -24,10 +24,12 @@ public class Clientes {
 	
 
 	@Column(nullable = false, length = 100) //Para criar coluna no BD e passar as definições
+	@NotEmpty(message="{campo.nome.obrigatorio}")
 	public String nome;
 	
-	//@CPF(message="cpf inválido")
 	@Column(nullable = false, length = 11)
+	@CPF(message = "{campo.cpf.invalido}")
+	@NotNull(message="{campo.cpf.obrigatorio}")
 	public String cpf;
 	
 	@Column(name = "data_cadastro", updatable = false)

@@ -3,19 +3,13 @@ package com.example.Clientes.ApiClientes.Controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.example.Clientes.ApiClientes.Model.Clientes;
@@ -42,7 +36,7 @@ public class ClientesController {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Clientes createCliente(@RequestBody Clientes cliente) {
+	public Clientes createCliente(@RequestBody @Valid Clientes cliente) {
 		return clientesService.create(cliente);
 	}
 	
@@ -60,7 +54,7 @@ public class ClientesController {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<?> updateCliete(@PathVariable int id, @RequestBody Clientes updateCliente) {
+	public ResponseEntity<?> updateCliete(@PathVariable int id, @RequestBody @Valid Clientes updateCliente) {
 		Optional<Clientes> c = clientesService.getById(id);
 		Clientes update = null;
 		

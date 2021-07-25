@@ -15,7 +15,7 @@ public class ApiClientesApplication {
 	@Bean //Um bean é um objeto que é instanciado, montado e gerenciado pelo Spring IoC container.
 	public CommandLineRunner run(@Autowired ClientesRepository clienteRepository) { //Será executado sempre que a aplicação começar
 		return args -> {
-			Clientes cliente = Clientes.builder().cpf("11111111111").nome("Fulano").build(); 
+			Clientes cliente = Clientes.builder().cpf("85630774069").nome("Fulano").build(); 
 			//Forma mais prática de adicionar dados sem usar os Setters, funciona pela anotation @Builder
 			
 			clienteRepository.save(cliente);
