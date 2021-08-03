@@ -21,12 +21,17 @@ export class ClientesFormComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.cliente);
+    this.cliente.id = undefined;
+    this.cliente.dataCadastro = undefined;
     this.service.salvar(this.cliente)
       .subscribe( response =>{
         console.log(response);
         this.success = true;
+        this.errors = [];
+        this.cliente = response;
       }, errorResponse => {
+        this.success = false;
+        this.cliente.id = undefined;
         this.errors = errorResponse.error.errors;   
       })
   }
