@@ -13,6 +13,7 @@ export class ClientesFormComponent implements OnInit {
   cliente : Cliente;
   success : boolean = false;
   errors: String[] = [];
+  clienteId : number | undefined;
 
   constructor( 
     private service : ClientesService,
@@ -26,9 +27,10 @@ export class ClientesFormComponent implements OnInit {
     let params = this.activatedRoute.params;
     params.subscribe(param => {
       if (param.id) {
+        this.clienteId = param.id; 
         this.service.getClienteById(param.id)
           .subscribe( response => {
-            this.cliente = response;           
+            this.cliente = response;          
         }, errorResponse => {
           this.cliente = new Cliente();
         }
@@ -40,19 +42,34 @@ export class ClientesFormComponent implements OnInit {
   }
 
   onSubmit(){
-    this.cliente.id = undefined;
-    this.cliente.dataCadastro = undefined;
-    this.service.salvar(this.cliente)
-      .subscribe( response =>{
-        console.log(response);
-        this.success = true;
-        this.errors = [];
-        this.cliente = response;
-      }, errorResponse => {
-        this.success = false;
-        this.cliente.id = undefined;
-        this.errors = errorResponse.error.errors;   
-      })
+
+    if (this.clienteId != null) {
+      console.log(this.clienteId);
+      this.service.update(this.cliente)
+        .subscribe( response => {
+          this.success = true;
+          this.errors = [];
+        }, errorResponse => {
+          this.success = false;
+          this.errors = ["Erro ao atualizar o cliente."];
+        }
+        
+        );
+    } else {
+    
+      this.cliente.id = undefined;
+      this.cliente.dataCadastro = undefined;
+      this.service.salvar(this.cliente)
+        .subscribe( response =>{
+          this.success = true;
+          this.errors = [];
+          this.cliente = response;
+        }, errorResponse => {
+          this.success = false;
+          this.cliente.id = undefined;
+          this.errors = errorResponse.error.errors;   
+        })
+    }
   }
 
   voltarParaListaClientes(){

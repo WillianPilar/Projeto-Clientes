@@ -30,13 +30,40 @@
                         <td>{{ cliente.cpf }}</td>
                         <td>{{ cliente.dataCadastro }}</td>
                         <td>
-                            <button class="btn btn-outline-secondary">
+                            <button class="btn btn-outline-secondary" routerLink="/clientes-form/{{ cliente.id }}">
                                 <i class="fa fa-edit"></i>
+                            </button>
+
+                            <button class="btn btn-outline-danger ml-2" data-toggle="modal" data-target="#modalDelecao" (click)="preparaDelecao(cliente)">
+                                <i class="fa fa-trash"></i>
                             </button>
                         </td>
                     </tr>
                 </tbody>
             </table>
+        </div>
+    </div>
+</div>
+
+<div id="modalDelecao" class="modal fade" role="dialog" *ngIf="clienteSelecionado">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>
+                    Deletar cliente {{ clienteSelecionado.nome }}
+                </h4>
+            </div>
+            <div class="modal-body">
+                <a>Deseja realmente deletar esse cliente?</a>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" (click)="deletarCliente()">
+                    Confirmar
+                </button>
+                <button class="btn btn-light" data-dismiss="modal">
+                    Cancelar
+                </button>
+            </div>
         </div>
     </div>
 </div>
