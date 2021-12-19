@@ -19,8 +19,11 @@ export class ClientesListaComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.service
-      .getClientes()
+    this.getAllClientes();
+  }
+
+  getAllClientes(){
+    this.service.getClientes()
       .subscribe( resposta => this.clientes = resposta);
   }
 
@@ -34,7 +37,13 @@ export class ClientesListaComponent implements OnInit {
 
   deletarCliente(){
     console.log(this.clienteSelecionado);
-    this.service.deletarCliente(this.clienteSelecionado);
+    this.service.deletarCliente(this.clienteSelecionado)
+      .subscribe(response => {
+
+        this.getAllClientes();
+        this.clienteSelecionado = new Cliente();
+
+    });
   }
 
 }
